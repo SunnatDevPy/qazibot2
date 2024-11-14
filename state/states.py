@@ -3,7 +3,6 @@ from aiogram.fsm.state import StatesGroup, State
 
 class Register(StatesGroup):
     full_name = State()
-    idora = State()
     contact = State()
     location = State()
     confirm = State()

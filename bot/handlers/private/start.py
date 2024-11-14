@@ -41,7 +41,7 @@ async def register_full_name(msg: Message, state: FSMContext):
 
 @start_router.message(Register.contact)
 async def register_full_name(msg: Message, state: FSMContext):
-    await state.set_state(Register.idora)
+    await state.set_state(Register.location)
     if msg.contact:
         await state.update_data(contact=msg.contact.phone_number)
         await msg.answer(html.bold("📍Locatsiya yuboring📍"), reply_markup=get_location(), parse_mode="HTML")
@@ -54,7 +54,7 @@ async def register_full_name(msg: Message, state: FSMContext):
             await msg.answer(html.bold("Telefon raqamni tog'ri kiriting"), parse_mode="HTML")
 
 
-@start_router.message(Register.location)
+@start_router.message(Register.location, F.location)
 async def register_full_name(msg: Message, state: FSMContext):
     if msg.location:
         await state.update_data(long=msg.location.longitude, lat=msg.location.latitude)

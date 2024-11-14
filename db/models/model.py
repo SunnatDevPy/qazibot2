@@ -36,7 +36,7 @@ class Categorie(Base):
 class Product(Base):
     id: Mapped[int] = mapped_column(BIGINT, primary_key=True)
     category_id: Mapped[int] = mapped_column(ForeignKey(Categorie.id, ondelete='CASCADE'))
-    photo: Mapped[ImageField] = mapped_column(ImageType(storage=FileSystemStorage('media/products/')))
+    photo: Mapped[ImageField] = mapped_column(ImageType(storage=FileSystemStorage('media/products/')), nullable=True)
     title: Mapped[str] = mapped_column(String)
     price: Mapped[int] = mapped_column(BIGINT)
     type: Mapped[str] = mapped_column(String, SQLAlchemyEnum(BooleanEnum), nullable=False)
